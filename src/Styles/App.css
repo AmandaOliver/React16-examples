@@ -1,0 +1,57 @@
+button {
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 4px;
+  outline: 0;
+  padding: .75em 1em;
+  border: 1px solid;
+}
+
+.join {
+  background-color: #faff05;
+  border-color: #faff05;
+  color: #00143C;  
+}
+
+.login {
+  background-color: #00afff;
+  border-color: #00afff;
+  color: white;
+  margin-top: 10px;
+}
+
+.logout {
+  background-color: #00afff;
+  border-color: #00afff;
+  color: #00143C;  
+}
+
+.header {
+  background-color: #00143c;
+  padding: 8px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap row;
+  justify-content: space-between;
+}
+
+.form {
+  width: 30%;
+  margin: auto;
+}
+
+.field {
+  width: 100%;
+  padding: 10px;
+  margin: 5px;
+}
+
+.label {
+  display: block;
+  padding: 10px;
+}
+
+.title {
+ padding: 10px;
+}
