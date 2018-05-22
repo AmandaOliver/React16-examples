@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { handleLogOut } from '../actions'
-import { connect } from 'react-redux'
+import { Provider, Consumer } from '../Contexts/UserContext';
 
-class Logout extends Component {
+export default class Logout extends Component {
     render() {
-        const { handleLogOut } = this.props;
         return (
-            <button className='logout' onClick={()=>handleLogOut()}>Logout</button>
+            <Consumer>
+                {({ handleLogout, currentUser }) =>
+                    <button className='logout' onClick={()=>handleLogout()}>Logout</button>
+                }
+            </Consumer>
         )
     }
 }
 
-export default connect(null, { handleLogOut })(Logout);

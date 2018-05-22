@@ -1,24 +1,20 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import Header from './Components/Header';
 import Content from './Components/Content'
-import { createStore } from 'redux'
-import reducer from './reducer'
-import { Provider } from 'react-redux';
-import './Styles/App.css';
+import { UserDataProvider } from './Contexts/UserContext'
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import './Styles/App.css';
 
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <React.Fragment>
-          <Header value="Demo Redux"/>
-          <Content />
-        </React.Fragment>
-      </Provider>
-
-    );
+      <UserDataProvider>
+          {/* <Header >Demo ContextAPI</Header> */}
+        {/* <Content />   */}
+        <Login />
+        <Logout/>
+      </UserDataProvider>
+    )
   }
 }
 

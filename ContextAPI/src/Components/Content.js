@@ -1,20 +1,17 @@
 import React, { Component } from 'react';
 import Login from './Login'
-import { connect } from 'react-redux';
 import UserList from './UserList';
+import { Provider, Consumer } from '../Contexts/UserContext';
 
-
-class Content extends Component {
+export default class Content extends Component {
     render() {
-        const { logged } = this.props;
         return (
-            !logged ? <Login /> : <UserList />
+            <Consumer>
+                {({ logged }) => 
+                    // !logged ? <Login /> : <UserList />
+                    <Login/>
+                }
+            </Consumer>
         )
     }
 }
-
-const mapStateToProps = state => ({
-    logged: state.logged || false,
-})
-
-export default connect(mapStateToProps)(Content)

@@ -1,43 +1,46 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { Provider, Consumer } from '../Contexts/UserContext';
 
 
-class UserList extends Component {
-    _getCustomUserList() {
+export default class UserList extends Component {
+    renderCustomUserList(userList, currentUser) {
         let customUserList = []
-        this.props.userList.reverse().map(user => {
-            if (user !== this.props.username) {
+        userList.reverse().map(user => {
+            if (user !== currentUser) {
                 customUserList.push(user);
             }
             return user;
         })
-        return customUserList;
+        return customUserList.length > 0 ? this.renderList(customUserList) : this.renderMessage();
+    }
+    renderList(customUserList) {
+        return (
+            <div>    
+                <h4>You need to be faster, this people were here before you: </h4>
+                <ul>
+                    {customUserList.map(user => <li key={user}>{user}</li>)}
+                </ul>
+            </div>
+        )
+    }
+    renderMessage() {
+        return (
+            <div>    
+                <h4>You are the first one, congrats =) </h4>
+            </div>
+        )
     }
     render() {
-        const { username } = this.props;
-        const customUserList = this._getCustomUserList();
         return (
-            <div className="userlist">
-                <h1>{`Welcome ${username}!`}</h1>
-                {customUserList.length > 0 ?
-                    <div>    
-                        <h4>You need to be faster, this people were here before you: </h4>
-                        <ul>
-                            {customUserList.map(user => <li key={user}>{user}</li>)}
-                        </ul>
+            <Consumer>
+                {({ userList, currentUser }) =>
+                    <div className="userlist">
+                        <h1>{`Welcome ${currentUser}!`}</h1>
+                        {this.renderCustomUserList(userList, currentUser)}
                     </div>    
-                : <div>    
-                    <h4>You are the first one, congrats! </h4>
-                    </div>
-                }    
-            </div>    
+                }
+            </Consumer>
+           
         )
     }
 }
-
-const mapStateToProps = state => ({
-    userList: state.userList,
-    username: state.currentUser
-})
-
-export default connect(mapStateToProps)(UserList)
