@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /Redux/node_modules
+/ContextAPI/node_modules
 
 # testing
 /coverage
