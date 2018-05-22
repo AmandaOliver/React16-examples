@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field } from "formik";
-import { Provider, Consumer } from '../Contexts/UserContext';
+import UserDataContext from '../UserDataContext';
 
 /**
  * Component that renders the form to log in
@@ -38,12 +38,12 @@ class Login extends Component {
 
     render() {
         return (
-            <Consumer>
+            <UserDataContext.Consumer>
                 {({ handleLogin }) => (
                     <div className='form'>
                         <h2>User Log In</h2>
                         <Formik
-                            onSubmit={values => 
+                            onSubmit={values =>
                                 handleLogin(values.username)
                             }
                             initialValues={{
@@ -54,7 +54,7 @@ class Login extends Component {
                         />
                     </div>
                 )}
-           </Consumer>    
+           </UserDataContext.Consumer>
         )
     }
 }

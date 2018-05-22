@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <React.Fragment>
-          <Header value="Demo Redux"/>
+          <Header>Demo Redux</Header>
           <Content />
         </React.Fragment>
       </Provider>

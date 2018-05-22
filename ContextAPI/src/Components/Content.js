@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import Login from './Login'
 import UserList from './UserList';
-import { Provider, Consumer } from '../Contexts/UserContext';
+import UserDataContext from '../UserDataContext';
 
 export default class Content extends Component {
     render() {
         return (
-            <Consumer>
-                {({ logged }) => 
-                    // !logged ? <Login /> : <UserList />
-                    <Login/>
+            <UserDataContext.Consumer>
+                {({ logged }) =>
+                    !logged ? <Login /> : <UserList />
                 }
-            </Consumer>
+            </UserDataContext.Consumer>
         )
     }
 }

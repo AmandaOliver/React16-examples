@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import { Provider, Consumer } from '../Contexts/UserContext';
+import UserDataContext from '../UserDataContext';
 
 export default class Logout extends Component {
-    render() {
-        return (
-            <Consumer>
-                {({ handleLogout, currentUser }) =>
-                    <button className='logout' onClick={()=>handleLogout()}>Logout</button>
-                }
-            </Consumer>
-        )
-    }
+  render() {
+    return (
+      <UserDataContext.Consumer>
+            {({currentUser}) => {
+                return <button className='logout'>{`Logout ${currentUser}`}</button>
+            }}
+      </UserDataContext.Consumer>
+    );
+  }
 }
-

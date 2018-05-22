@@ -7,9 +7,10 @@ class Header extends Component {
     render() {
         const { logged } = this.props;
         return (
-            <header className='header'> <span className='title'>Demo Redux</span>
-                {logged ? <Logout /> :  <button className='join'>Join us!</button>}
-            </header>
+            <header className='header'>
+                <span className='title'>{this.props.children}</span>
+                {logged ? <Logout /> : <button className='join'>Join us!</button>}
+        </header>
         )
     }
 }

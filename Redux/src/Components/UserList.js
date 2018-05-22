@@ -15,7 +15,7 @@ class UserList extends Component {
     }
     renderList(customUserList) {
         return (
-            <div>    
+            <div>
                 <h4>You need to be faster, this people were here before you: </h4>
                 <ul>
                     {customUserList.map(user => <li key={user}>{user}</li>)}
@@ -25,7 +25,7 @@ class UserList extends Component {
     }
     renderMessage() {
         return (
-            <div>    
+            <div>
                 <h4>You are the first one, congrats =) </h4>
             </div>
         )
@@ -36,8 +36,8 @@ class UserList extends Component {
         return (
             <div className="userlist">
                 <h1>{`Welcome ${username}!`}</h1>
-                {customUserList.length > 0 ? this.renderList(customUserList) : this.renderMessage()}  
-            </div>    
+                {customUserList.length > 0 ? this.renderList(customUserList) : this.renderMessage()}
+            </div>
         )
     }
 }

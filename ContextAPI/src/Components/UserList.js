@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Provider, Consumer } from '../Contexts/UserContext';
+import UserDataContext from '../UserDataContext';
 
 
 export default class UserList extends Component {
@@ -15,7 +15,7 @@ export default class UserList extends Component {
     }
     renderList(customUserList) {
         return (
-            <div>    
+            <div>
                 <h4>You need to be faster, this people were here before you: </h4>
                 <ul>
                     {customUserList.map(user => <li key={user}>{user}</li>)}
@@ -25,22 +25,22 @@ export default class UserList extends Component {
     }
     renderMessage() {
         return (
-            <div>    
+            <div>
                 <h4>You are the first one, congrats =) </h4>
             </div>
         )
     }
     render() {
         return (
-            <Consumer>
+            <UserDataContext.Consumer>
                 {({ userList, currentUser }) =>
                     <div className="userlist">
                         <h1>{`Welcome ${currentUser}!`}</h1>
                         {this.renderCustomUserList(userList, currentUser)}
-                    </div>    
+                    </div>
                 }
-            </Consumer>
-           
+            </UserDataContext.Consumer>
+
         )
     }
 }
