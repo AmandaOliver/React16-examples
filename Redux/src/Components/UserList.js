@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 class UserList extends Component {
-    _getCustomUserList() {
+    getCustomUserList() {
         let customUserList = []
         this.props.userList.reverse().map(user => {
             if (user !== this.props.username) {
@@ -17,9 +17,9 @@ class UserList extends Component {
         return (
             <div>    
                 <h4>You need to be faster, this people were here before you: </h4>
-                    <ul>
-                        {customUserList.map(user => <li key={user}>{user}</li>)}
-                    </ul>
+                <ul>
+                    {customUserList.map(user => <li key={user}>{user}</li>)}
+                </ul>
             </div>
         )
     }
@@ -32,7 +32,7 @@ class UserList extends Component {
     }
     render() {
         const { username } = this.props;
-        const customUserList = this._getCustomUserList();
+        const customUserList = this.getCustomUserList();
         return (
             <div className="userlist">
                 <h1>{`Welcome ${username}!`}</h1>
