@@ -4,9 +4,8 @@ export function handleLogIn(user) {
       user
     }
   }
-export function handleLogOut(user) {
+export function handleLogOut() {
     return {
-      type: 'USER_LOGOUT',
-      user
+      type: 'USER_LOGOUT'
     }
 }

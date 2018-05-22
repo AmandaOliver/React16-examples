@@ -52,6 +52,12 @@ button {
   padding: 10px;
 }
 
-.title {
+.userlist {
  padding: 10px;
+ width: 30%;
+ margin: auto;
+}
+
+.title {
+  padding: 10px;
 }

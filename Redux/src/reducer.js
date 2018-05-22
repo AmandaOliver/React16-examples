@@ -17,9 +17,9 @@ export default function (state = initialState, action) {
                 userList: state.userList,
                 logged: false
             }
-            // if (!newState.userList.includes(action.username)) {
+            if (!newState.userList.includes(state.currentUser)) {
                 newState.userList.push(state.currentUser)
-            // }
+            }
             return newState;
         default:
             return state;

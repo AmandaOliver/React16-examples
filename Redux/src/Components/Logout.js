@@ -4,13 +4,11 @@ import { connect } from 'react-redux'
 
 class Logout extends Component {
     render() {
-        const { handleLogOut, username } = this.props;
+        const { handleLogOut } = this.props;
         return (
-            <button className='logout' onClick={()=>handleLogOut(username)}>Logout</button>
+            <button className='logout' onClick={()=>handleLogOut()}>Logout</button>
         )
     }
 }
-const mapStateToProps = state => ({
-    username: state.currentUser
-})
-export default connect(mapStateToProps, { handleLogOut })(Logout);
+
+export default connect(null, { handleLogOut })(Logout);

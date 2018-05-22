@@ -15,7 +15,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-    logged: state || false
+    logged: state.logged || false
 })
 
 export default connect(mapStateToProps)(Header)
