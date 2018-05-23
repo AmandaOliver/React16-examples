@@ -1,11 +1,12 @@
-export function handleLogIn(user) {
+export function handleLogin(username) {
     return {
       type: 'USER_LOGIN',
-      user
+      username
     }
   }
-export function handleLogOut() {
+export function handleLogout(username) {
     return {
-      type: 'USER_LOGOUT'
+      type: 'USER_LOGOUT',
+      username
     }
 }

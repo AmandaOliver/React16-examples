@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { Formik, Form, Field } from "formik";
 import UserDataContext from '../UserDataContext';
 
-/**
- * Component that renders the form to log in
- */
 class Login extends Component {
     renderForm({ handleChange, values }) {
         return (
@@ -18,7 +15,7 @@ class Login extends Component {
                     onChange={handleChange}
                     required
                     autoComplete="username"
-                    value={values.user} />
+                    value={values.username} />
                 <span className='label'>Password:</span>
                 <Field
                     className='field'

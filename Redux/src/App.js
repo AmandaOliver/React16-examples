@@ -6,14 +6,15 @@ import reducer from './reducer'
 import { Provider } from 'react-redux';
 import './Styles/App.css';
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducer);
 
-class App extends Component {
+export default class App extends Component {
+  
   render() {
     return (
       <Provider store={store}>
         <React.Fragment>
-          <Header>Demo Redux</Header>
+          <Header>Redux</Header>
           <Content />
         </React.Fragment>
       </Provider>
@@ -21,5 +22,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;

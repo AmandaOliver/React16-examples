@@ -5,31 +5,26 @@ import UserDataContext from '../UserDataContext';
 export default class UserList extends Component {
     renderCustomUserList(userList, currentUser) {
         let customUserList = []
-        userList.reverse().map(user => {
+        userList.forEach(user => {
             if (user !== currentUser) {
-                customUserList.push(user);
+                customUserList.push(<li key={user}>{user}</li>);
             }
-            return user;
         })
-        return customUserList.length > 0 ? this.renderList(customUserList) : this.renderMessage();
+        return customUserList.length > 0 ?
+            this.renderList(customUserList)
+            : <h4>You are the first one, congrats =) </h4>;
     }
     renderList(customUserList) {
         return (
             <div>
                 <h4>You need to be faster, this people were here before you: </h4>
                 <ul>
-                    {customUserList.map(user => <li key={user}>{user}</li>)}
+                    {customUserList.reverse()}
                 </ul>
             </div>
         )
     }
-    renderMessage() {
-        return (
-            <div>
-                <h4>You are the first one, congrats =) </h4>
-            </div>
-        )
-    }
+
     render() {
         return (
             <UserDataContext.Consumer>

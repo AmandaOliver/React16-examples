@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Logout from './Logout'
-
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -8,9 +7,11 @@ class Header extends Component {
         const { logged } = this.props;
         return (
             <header className='header'>
-                <span className='title'>{this.props.children}</span>
+                <span className='title'>
+                    {this.props.children}
+                </span>
                 {logged ? <Logout /> : <button className='join'>Join us!</button>}
-        </header>
+            </header>
         )
     }
 }

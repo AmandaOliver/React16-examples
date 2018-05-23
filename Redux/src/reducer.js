@@ -1,6 +1,6 @@
 const initialState = {
     logged: false,
-    currentUser: undefined,
+    currentUser: '',
     userList: []
 }
 
@@ -10,17 +10,16 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 logged: true,
-                currentUser: action.user.username
+                currentUser: action.username
             };
         case 'USER_LOGOUT':
-            let newState = {
-                userList: state.userList,
-                logged: false
+            const { userList } = state;
+            const { username } = action;
+            return {
+                logged: false,
+                currentUser: '',
+                userList: !userList.includes(username) ? userList.concat(username) : userList,
             }
-            if (!newState.userList.includes(state.currentUser)) {
-                newState.userList.push(state.currentUser)
-            }
-            return newState;
         default:
             return state;
     }

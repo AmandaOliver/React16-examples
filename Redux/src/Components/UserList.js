@@ -3,40 +3,33 @@ import { connect } from 'react-redux';
 
 
 class UserList extends Component {
-    getCustomUserList() {
+    renderCustomUserList(userList, currentUser) {
         let customUserList = []
-        this.props.userList.reverse().map(user => {
-            if (user !== this.props.username) {
-                customUserList.push(user);
+        userList.forEach(user => {
+            if (user !== currentUser) {
+                customUserList.push(<li key={user}>{user}</li>);
             }
-            return user;
         })
-        return customUserList;
+        return customUserList.length > 0 ?
+            this.renderList(customUserList)
+            : <h4>You are the first one, congrats =) </h4>;
     }
     renderList(customUserList) {
         return (
             <div>
                 <h4>You need to be faster, this people were here before you: </h4>
                 <ul>
-                    {customUserList.map(user => <li key={user}>{user}</li>)}
+                    {customUserList.reverse()}
                 </ul>
             </div>
         )
     }
-    renderMessage() {
-        return (
-            <div>
-                <h4>You are the first one, congrats =) </h4>
-            </div>
-        )
-    }
     render() {
-        const { username } = this.props;
-        const customUserList = this.getCustomUserList();
+        const { currentUser, userList } = this.props;
         return (
             <div className="userlist">
-                <h1>{`Welcome ${username}!`}</h1>
-                {customUserList.length > 0 ? this.renderList(customUserList) : this.renderMessage()}
+                <h1>{`Welcome ${currentUser}!`}</h1>
+                {this.renderCustomUserList(userList, currentUser)}
             </div>
         )
     }
@@ -44,7 +37,7 @@ class UserList extends Component {
 
 const mapStateToProps = state => ({
     userList: state.userList,
-    username: state.currentUser
+    currentUser: state.currentUser
 })
 
 export default connect(mapStateToProps)(UserList)
