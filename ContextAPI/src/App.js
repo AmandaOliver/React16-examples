@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Header from './Components/Header'
 import Content from './Components/Content'
 
 // we need to import our context definition, we could just initialize the context in this file,
 // but i don't want to :D
-import UserDataContext from './UserDataContext';
-import './Styles/App.css';
+import UserDataContext from './UserDataContext'
+import './Styles/App.css'
 
-/**
- * Main class of our application, which state is going to be the global app state
- */
+// Main class of our application, which state is going to be the global app state
 export default class App extends Component {
-  
+
   /**
   * method to modify the state of the app when a user logs in:
   * @param {string} username the username of the user that is logging in
   */
   _handleLogin = username => {
-    this.setState(({userList}) => ({
+    this.setState(({ userList }) => ({
         logged: true,
         currentUser: username,
         userList,
@@ -28,8 +26,8 @@ export default class App extends Component {
    * method to modify the state of the app when a user logs out
    * @param {string} username the username of the user that is logging out
    */
-  _handleLogout = (username) => {   
-    this.setState(({userList}) => ({
+  _handleLogout = username => {   
+    this.setState(({ userList }) => ({
         logged: false,
         currentUser: '',
         userList: !userList.includes(username) ? userList.concat(username) : userList,
