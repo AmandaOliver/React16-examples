@@ -2,14 +2,13 @@
 
 # dependencies
 /node_modules
-/Redux/node_modules
-/ContextAPI/node_modules
+/*/node_modules
 
 # testing
 /coverage
 
 # production
-/build
+/*/build
 
 # misc
 .DS_Store
