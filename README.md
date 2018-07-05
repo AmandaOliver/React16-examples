@@ -2,4 +2,4 @@ This project aims to ilustrate the differences between the React-Redux way of sh
 
 The main differences are the following:
 
-![Class State and methods vs Redux actions and reducers](https://raw.githubusercontent.com/AmandaOliver/Redux-vs-contextAPI/images/image1.png)
+![Class State and methods vs Redux actions and reducers](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/Content%2C%20access%20state.png)
