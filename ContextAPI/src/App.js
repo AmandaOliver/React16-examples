@@ -33,6 +33,12 @@ export default class App extends Component {
         previousUsersList: !previousUsersList.includes(username) ? previousUsersList.concat(username) : previousUsersList,
     }))
   }
+  _produceError = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      shouldFail: true,
+    }));
+  }
 
   // inner state of the class, we will share this with the provider
   // ***** ReduxVSContextAPI: notice that the values in here would be the ones in the Redux store,
@@ -43,7 +49,8 @@ export default class App extends Component {
     currentUser: '',
     previousUsersList: [],
     handleLogin: this._handleLogin,
-    handleLogout: this._handleLogout
+    handleLogout: this._handleLogout,
+    produceError: this._produceError,
   }
 
   /**
