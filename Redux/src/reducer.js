@@ -4,7 +4,7 @@ const initialState = {
     userList: []
 }
 
-export default (state = initialState, action) => {
+export default (action, state = initialState) => {
 	switch (action.type) {
         case 'USER_LOGIN':
             return {
