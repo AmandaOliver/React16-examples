@@ -8,3 +8,7 @@ export default () => (
         }
     </UserDataContext.Consumer>
 )
+
+const mapDispatchToProps = dispatch => ({
+    handleLogout: currentUser => dispatch(handleLogout(currentUser)),
+})

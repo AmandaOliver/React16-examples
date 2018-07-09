@@ -20,6 +20,11 @@ export default (state = initialState, action) => {
                 currentUser: '',
                 previousUsersList: !previousUsersList.includes(username) ? previousUsersList.concat(username) : previousUsersList,
             }
+        case 'PRODUCE_ERROR':
+            return {
+                ...state,
+                shouldFail: true,
+            }
         default:
             return state
     }

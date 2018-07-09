@@ -10,3 +10,8 @@ export function handleLogout(username) {
       username
     }
 }
+export function produceError() {
+  return {
+    type: 'PRODUCE_ERROR',
+  }
+}
