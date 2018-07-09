@@ -19,6 +19,7 @@ The main differences are the following:
 2. Faster to develop
 3. Less external dependencies
 4. Happens very often that we use Redux innecesarily, with this approach those situations are easier to spot, as we have much less code complexity.
--Cons:
+
+- Cons:
 1. It's a very new API, we may have not discovered all the constraints that this approach imply.
 2. Dev toold not so good, no actions inspection.
