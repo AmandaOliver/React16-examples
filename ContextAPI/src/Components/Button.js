@@ -1,12 +1,11 @@
 import React from 'react'
+import Logout from './Logout'
 import UserDataContext from '../UserDataContext'
 
 export default () => (
     <UserDataContext.Consumer>
-        {({currentUser, handleLogout}) =>
-            <button className='logout' onClick={() => handleLogout(currentUser)}>
-                Logout
-            </button>
+        {({ logged }) =>
+            logged ? <Logout /> : <button className='join'>Join us!</button>
         }
     </UserDataContext.Consumer>
 )

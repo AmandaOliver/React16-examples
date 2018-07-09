@@ -15,10 +15,10 @@ export default class App extends Component {
   * @param {string} username the username of the user that is logging in
   */
   _handleLogin = username => {
-    this.setState(({ userList }) => ({
+    this.setState(({ previousUsersList }) => ({
         logged: true,
         currentUser: username,
-        userList,
+        previousUsersList,
       }))
   }
 
@@ -26,11 +26,11 @@ export default class App extends Component {
    * method to modify the state of the app when a user logs out
    * @param {string} username the username of the user that is logging out
    */
-  _handleLogout = username => {   
-    this.setState(({ userList }) => ({
+  _handleLogout = username => {
+    this.setState(({ previousUsersList }) => ({
         logged: false,
         currentUser: '',
-        userList: !userList.includes(username) ? userList.concat(username) : userList,
+        previousUsersList: !previousUsersList.includes(username) ? previousUsersList.concat(username) : previousUsersList,
     }))
   }
 
@@ -41,20 +41,20 @@ export default class App extends Component {
   state = {
     logged: false,
     currentUser: '',
-    userList: [],
+    previousUsersList: [],
     handleLogin: this._handleLogin,
     handleLogout: this._handleLogout
   }
 
   /**
-   * render method that wrapps everything in a provider component in order 
+   * render method that wrapps everything in a provider component in order
    * to share it's value with the childs that uses the consumer.
    * *****ReduxVSContextAPI: notice that the provider it's the same, but it receives value prop instead of 'store'
    */
   render() {
     return (
       <UserDataContext.Provider value={this.state}>
-        <Header>ContextAPI</Header>
+        <Header>Context API App</Header>
         <Content/>
       </UserDataContext.Provider>
     )

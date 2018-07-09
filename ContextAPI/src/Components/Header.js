@@ -1,16 +1,12 @@
-import React, { Component } from 'react'
-import Logout from './Logout'
-import UserDataContext from '../UserDataContext'
+import React from 'react'
+import Button from './Button'
 
+// We dont need to pass down the logged property needed by Button as Context API stores it.
 export default ({ children }) => (
-    <UserDataContext.Consumer>
-        {({ logged }) => (
-            <header className='header'>
-                <span className='title'>
-                    {children}
-                </span>
-                {logged ? <Logout /> : <button className='join'>Join us!</button>}
-            </header>
-        )}
-    </UserDataContext.Consumer>
+    <header className='header'>
+        <span className='title'>
+            {children}
+        </span>
+        <Button/>
+    </header>
 )

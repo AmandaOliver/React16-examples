@@ -1,18 +1,10 @@
-import React, { Component } from 'react'
-import Logout from './Logout'
-import { connect } from 'react-redux';
-
-const Header = ({ logged }) => (
+import React from 'react'
+import Button from './Button'
+export default ({ children }) => (
     <header className='header'>
         <span className='title'>
-            {this.props.children}
+            {children}
         </span>
-        {logged ? <Logout /> : <button className='join'>Join us!</button>}
+        <Button />
     </header>
 )
-
-const mapStateToProps = state => ({
-    logged: state.logged || false
-})
-
-export default connect(mapStateToProps)(Header)

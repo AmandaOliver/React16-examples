@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Header from './Components/Header'
 import Content from './Components/Content'
 import { createStore } from 'redux'
@@ -11,7 +11,7 @@ const store = createStore(reducer)
 export default () =>  (
   <Provider store={store}>
     <React.Fragment>
-      <Header>Redux</Header>
+      <Header>Redux App</Header>
       <Content />
     </React.Fragment>
   </Provider>

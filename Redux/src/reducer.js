@@ -1,10 +1,10 @@
 const initialState = {
     logged: false,
     currentUser: '',
-    userList: []
+    previousUsersList: []
 }
 
-export default (action, state = initialState) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
         case 'USER_LOGIN':
             return {
@@ -13,12 +13,12 @@ export default (action, state = initialState) => {
                 currentUser: action.username
             };
         case 'USER_LOGOUT':
-            const { userList } = state
+            const { previousUsersList } = state
             const { username } = action
             return {
                 logged: false,
                 currentUser: '',
-                userList: !userList.includes(username) ? userList.concat(username) : userList,
+                previousUsersList: !previousUsersList.includes(username) ? previousUsersList.concat(username) : previousUsersList,
             }
         default:
             return state

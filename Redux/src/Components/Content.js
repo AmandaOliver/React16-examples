@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Login from './Login'
 import { connect } from 'react-redux'
-import UserList from './UserList'
+import PreviousUsersList from './PreviousUsersList'
 
-const Context = ({ logged }) => !logged ? <Login /> : <UserList />
+const Content = ({ logged }) => !logged ? <Login /> : <PreviousUsersList />
 
 const mapStateToProps = state => ({
     logged: state.logged || false,
