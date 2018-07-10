@@ -11,7 +11,7 @@ button {
 .join {
   background-color: #faff05;
   border-color: #faff05;
-  color: #00143C;  
+  color: #00143C;
 }
 
 .login {
@@ -24,7 +24,7 @@ button {
 .logout {
   background-color: #00afff;
   border-color: #00afff;
-  color: #00143C;  
+  color: #00143C;
 }
 
 .header {
@@ -60,4 +60,11 @@ button {
 
 .title {
   padding: 10px;
+}
+.error {
+  background-color: #00afff;
+}
+.error_image {
+  width: 50%;
+  margin: 0 25%;
 }

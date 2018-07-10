@@ -1,13 +1,15 @@
 import React from 'react'
 import Button from './Button'
-import ProduceError from './ProduceError'
+import ErrorButton from './ErrorButton'
 // We dont need to pass down the logged property needed by Button as Context API stores it.
 export default ({ children }) => (
     <header className='header'>
         <span className='title'>
             {children}
         </span>
-        <ProduceError />
-        <Button/>
+        <div>
+            <ErrorButton />
+            <Button/>
+        </div>
     </header>
 )

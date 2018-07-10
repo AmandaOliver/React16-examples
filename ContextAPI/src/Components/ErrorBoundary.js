@@ -10,7 +10,8 @@ export default class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <h1>We are sorry!! Something went wrong.</h1>;
+      return <img className='error_image'
+        src='https://www.netserve365.com/wp-content/uploads/2016/11/human-error-1.jpg' />;
     }
     return this.props.children;
   }
