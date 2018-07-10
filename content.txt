@@ -3,6 +3,6 @@
 - render-props a/b testing
 - portals: example modal
 ----- contextAPI (no crear objetos en render)
-- error boundaries, comparison of an element crashing and not its son vs all crashing showing another UI
+----- error boundaries, comparison of an element crashing and not its son vs all crashing showing another UI
 - new lifecicle, show chart
 - https://codesandbox.io/s/8nq4w3jj39 suspense

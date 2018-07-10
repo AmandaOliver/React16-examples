@@ -1,6 +1,6 @@
 # React 16.3
 
-This project aims to ilustrate the differences between the React 16.0 way of doing things and the new React 16.3 version.
+This project aims to ilustrate the differences between the old React way of doing things and the new React 16 version.
 
 ## Redux vs Context API
 
@@ -57,7 +57,7 @@ This new feature allow us to not break the whole component tree if there is a fa
 #### Usage
 ![Error boundary usage](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image8.png)
 
-**** Note: As in development env we get a detailed view of the errors to see this example in the example projects it's necessary to run it in production mode with
+**** Note: As in development env we get a detailed view of the errors to see this feature in the example projects it's necessary to run it in production mode with
 ```
 npm run start:prod
 ```
