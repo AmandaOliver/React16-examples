@@ -56,3 +56,8 @@ This new feature allow us to not break the whole component tree if there is a fa
 ![Error boundary](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image7.png)
 #### Usage
 ![Error boundary usage](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image8.png)
+
+**** Note: As in development env we get a detailed view of the errors to see this example in the example projects it's necessary to run it in production mode with
+```
+npm run start:prod
+```
