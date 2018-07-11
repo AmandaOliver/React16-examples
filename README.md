@@ -1,9 +1,10 @@
 # React 16.3
 
 This project aims to ilustrate the differences between the old React way of doing things and the new React 16 version.
+
 ## Render props
 A render prop is a function prop that a component uses to know what to render.
-This is a very useful technique for sharing code between components.
+This is a very useful technique for sharing code between components not a new feature, but it's becoming popular recently.
 
 Here there is a generic overview:
 
@@ -131,3 +132,9 @@ inside the render method in our component, and then use the component as any oth
 
 ### Code example
 ![Portals](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image9.png)
+
+## Other new features
+- New return types for render: [Fragments](https://reactjs.org/docs/fragments.html), strings and array of elements
+- [Support for custom DOM attributes](https://reactjs.org/blog/2017/09/08/dom-attributes-in-react-16.html)
+- [CreateRef API](https://reactjs.org/docs/refs-and-the-dom.html)
+- [Pointer Events](https://reactjs.org/blog/2018/05/23/react-v-16-4.html)
