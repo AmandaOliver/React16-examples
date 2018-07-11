@@ -57,7 +57,26 @@ This new feature allow us to not break the whole component tree if there is a fa
 #### Usage
 ![Error boundary usage](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image8.png)
 
-**** Note: As in development env we get a detailed view of the errors to see this feature in the example projects it's necessary to run it in production mode with
+## Portals
+
+React docs define it as:
+> Portals provide a first-class way to render children into a DOM node that exists outside
+> the DOM hierarchy of the parent component.
+
+We can say in a very simplified way that portals allow you to render parts of the UI of your React app in another place,
+it can be even in a different window like in this [example](https://hackernoon.com/using-a-react-16-portal-to-do-something-cool-2a2d627b0202)
+
+
+If you have tried to create any UI bit that needed to break-out of it's container in React like modals or tooltips probably you already know how painful it can be, that's the reason why we had some libraries available in npm like [this one](https://github.com/reactjs/react-modal) for modals or [this one](https://www.npmjs.com/package/react-tooltip) for tooltips.
+Now we are able to do it easily by using Portals!
+
+### How it works
+
+We just need to call
+```javascript
+ReactDOM.createPortal(child, container)
 ```
-npm run start:prod
-```
+inside the render method in our component.
+
+### Code example
+![Portals](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image9.png)
