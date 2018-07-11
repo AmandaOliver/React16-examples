@@ -27,19 +27,23 @@ class SharedComponent extends Component {
 ```javascript
 class ComponentA extends Component {
   render(){
-    <SharedComponent render={({info})=>{
-      <h1> I am component A</h1>
-      <h2>{info}</h2>
-    }}/>
+    <SharedComponent render={({info})=>(
+      <div>
+        <h1> I am component A</h1>
+        <h2>{info}</h2>
+      </div>
+    )}/>
   }
 }
 
 class ComponentB extends Component {
   render(){
-    <SharedComponent render={({info})=>{
-      <h1> I am component B</h1>
-      <h3>{info}</h3>
-    }}/>
+    <SharedComponent render={({info})=>(
+      <div>
+        <h1>I am component B</h1>
+        <h3>{info}</h3>
+      </div>
+    )}/>
   }
 }
 ```
