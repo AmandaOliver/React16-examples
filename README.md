@@ -28,7 +28,7 @@ class SharedComponent extends Component {
 class ComponentA extends Component {
   render(){
     <SharedComponent render={({info})=>{
-      <h1> I'm component A</h1>
+      <h1> I am component A</h1>
       <h2>{info}</h2>
     }}/>
   }
@@ -37,7 +37,7 @@ class ComponentA extends Component {
 class ComponentB extends Component {
   render(){
     <SharedComponent render={({info})=>{
-      <h1> I'm component B</h1>
+      <h1> I am component B</h1>
       <h3>{info}</h3>
     }}/>
   }
