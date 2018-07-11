@@ -1,7 +1,7 @@
 - React 16.3 features:
 - pointer events
 - render-props a/b testing
-- portals: example modal
+----- portals: example modal
 ----- contextAPI (no crear objetos en render)
 ----- error boundaries, comparison of an element crashing and not its son vs all crashing showing another UI
 - new lifecicle, show chart

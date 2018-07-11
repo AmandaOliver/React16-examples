@@ -1,8 +1,55 @@
 # React 16.3
 
 This project aims to ilustrate the differences between the old React way of doing things and the new React 16 version.
+## Render props
+A render prop is a function prop that a component uses to know what to render.
+This is a very useful technique for sharing code between components.
 
-## Redux vs Context API
+Here there is a generic overview:
+
+- Think about a component that encapsulate a certain logic that we want to reuse:
+
+```javascript
+class SharedComponent extends Component {
+  // different methods and state that we want to reuse
+  state = {
+    info: 'lets pretend we have something useful in here'
+  }
+  render(){
+    // the UI is given by a function that we receive as a prop
+    {this.props.render(this.state)}
+  }
+}
+```
+
+- Now we can pass a render prop to the previous component, and modify the way we render the info:
+
+```javascript
+class ComponentA extends Component {
+  render(){
+    <SharedComponent render={({info})=>{
+      <h1> I'm component A</h1>
+      <h2>{info}</h2>
+    }}/>
+  }
+}
+
+class ComponentB extends Component {
+  render(){
+    <SharedComponent render={({info})=>{
+      <h1> I'm component B</h1>
+      <h3>{info}</h3>
+    }}/>
+  }
+}
+```
+
+And this is exactly what the Context API uses to share the common state and methods between the different components.
+For more info, please check the following links:
+- [React docs](https://reactjs.org/docs/render-props.html)
+- [Why render props, motivation](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
+
+## Context API
 
 If you're using Redux only for avoiding passing props down the React tree then you should consider Context API instead (probably you didn't need Redux in the first place).
 
@@ -76,7 +123,7 @@ We just need to call
 ```javascript
 ReactDOM.createPortal(child, container)
 ```
-inside the render method in our component.
+inside the render method in our component, and then use the component as any other, the events fired from this component will be propagated to the ancestors in the React tree.
 
 ### Code example
 ![Portals](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image9.png)
