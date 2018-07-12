@@ -133,6 +133,37 @@ inside the render method in our component, and then use the component as any oth
 ### Code example
 ![Portals](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image9.png)
 
+## New lifecycles
+
+React team is preparing a major change in React components lifecycle, as you may already know renderization is synchronous at the moment but this is going to change soon.
+![Async chart](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image10.png)
+
+In order to prepare for this change React is advising us to stop using the following methods or to prepend them with 'UNSAFE_' prefix:
+- componentWillMount
+- componentWillReceiveProps
+- componentWillUpdate
+as they may be called several times during renderization with the new async mode generating unconsistencies.
+
+From React 17.0 this methods will be removed (only available with UNSAFE_ preffix) so we will need to use the new ones:
+- getDerivedStateFromProps
+- getSnapshotBeforeUpdate
+you can find more information about those new methods as well as migration guidelines in this [link](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html)
+
+## StricMode Component
+
+In order to make the migration task easier and highlight potential problems now we have a [StrictMode Component](https://reactjs.org/docs/strict-mode.html) available.
+This component doesn't produce any UI and doesn't run on production mode, it activates additional checks and warnings like:
+- Identifying components with unsafe lifecycles
+- Warning about legacy string ref API usage
+- Detecting unexpected side effects
+- Detecting legacy context API
+additional functionality will be added with future releases of React.
+To use it just wrap your components with ```<React.StrictMode>``` tag.
+![StrictMode](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image11.png)
+
+In our example project we have a dependency on Formik that hasn't updated their classes so now we can see a Warning when running the app:
+![ConsoleStrictMode](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image12.png)
+
 ## Other new features
 - New return types for render: [Fragments](https://reactjs.org/docs/fragments.html), strings and array of elements
 - [Support for custom DOM attributes](https://reactjs.org/blog/2017/09/08/dom-attributes-in-react-16.html)
