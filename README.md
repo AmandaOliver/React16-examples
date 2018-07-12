@@ -3,8 +3,9 @@
 This project aims to ilustrate the differences between the old React way of doing things and the new React 16 version.
 
 ## Render props
+
 A render prop is a function prop that a component uses to know what to render.
-This is a very useful technique for sharing code between components not a new feature, but it's becoming popular recently.
+This is a very useful technique for sharing code between components (not a new feature) that it's becoming popular recently.
 
 Here there is a generic overview:
 
@@ -23,7 +24,7 @@ class SharedComponent extends Component {
 }
 ```
 
-- Now we can pass a render prop to the previous component, and modify the way we render the info:
+- Now we can pass a render prop to the previous componentto define how we render the info:
 
 ```javascript
 class ComponentA extends Component {
@@ -56,11 +57,11 @@ For more info, please check the following links:
 
 ## Context API
 
-If you're using Redux only for avoiding passing props down the React tree then you should consider Context API instead (probably you didn't need Redux in the first place).
+If you're using Redux only for avoiding passing props down the React tree then you should consider Context API instead ([probably you didn't need Redux in the first place](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)).
 
 On the other hand, if you use Redux with redux-sagas or redux-thunk to maintain a global state that get's updated with API requests you still need Redux.
 
-This new Context API is intented exclusively to avoid passing props down, which is not the main aim of Redux although it was commonly used to solve this "problem".
+This new Context API is intented exclusively to avoid passing props down the React tree, which is not the main aim of Redux although it was commonly used for this purpose.
 
 ### Comparison
 The main differences are the following:
@@ -88,7 +89,7 @@ The main differences are the following:
 
 ## Error Boundaries
 
-Error Boundaries are React components that wraps others, they don't have their own UI, just catch errors that may happen in one of the child components, and renders a fallback UI.
+[Error Boundaries](https://reactjs.org/docs/error-boundaries.html) are React components that wraps others, they don't have their own UI, just catch errors that may happen in one of the child components, and renders a fallback UI.
 
 For making a component behave like an Error Boundary, it should implement the method 'componentDidCatch' and define a fallback UI that will be rendered if an error happens.
 ComponentDidCatch method works as a catch block in vanillaJS so it won't catch errors happening within himself, or in asynchronous code, or in event handlers.
@@ -118,14 +119,16 @@ React docs define it as:
 We can say in a very simplified way that portals allow you to render parts of the UI of your React app in another place,
 it can be even in a different window like in this [example](https://hackernoon.com/using-a-react-16-portal-to-do-something-cool-2a2d627b0202)
 
-
 If you have tried to create any UI bit that needed to break-out of it's container in React like modals or tooltips probably you already know how painful it can be, that's the reason why we had some libraries available in npm like [this one](https://github.com/reactjs/react-modal) for modals or [this one](https://www.npmjs.com/package/react-tooltip) for tooltips.
-Now we are able to do it easily by using Portals!
+Now we are able to do it easily by using [Portals](https://reactjs.org/docs/portals.html)!
 
 ### How it works
 
 We just need to call
 ```javascript
+/**
+ * The first argument (child) is any renderable React child, such as an element, string, or fragment. The second argument (container) is a DOM element.
+ */
 ReactDOM.createPortal(child, container)
 ```
 inside the render method in our component, and then use the component as any other, the events fired from this component will be propagated to the ancestors in the React tree.
@@ -136,17 +139,19 @@ inside the render method in our component, and then use the component as any oth
 ## New lifecycles
 
 React team is preparing a major change in React components lifecycle, as you may already know renderization is synchronous at the moment but this is going to change soon.
-![Async chart](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image10.png)
+![Async chart](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image10.jpg)
 
-In order to prepare for this change React is advising us to stop using the following methods or to prepend them with 'UNSAFE_' prefix:
+In order to prepare for this change React is advising us to stop using the following methods or to prepend them with 'UNSAFE_' prefix to fix it later on:
 - componentWillMount
 - componentWillReceiveProps
 - componentWillUpdate
+
 as they may be called several times during renderization with the new async mode generating unconsistencies.
 
 From React 17.0 this methods will be removed (only available with UNSAFE_ preffix) so we will need to use the new ones:
 - getDerivedStateFromProps
 - getSnapshotBeforeUpdate
+
 you can find more information about those new methods as well as migration guidelines in this [link](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html)
 
 ## StricMode Component
@@ -157,11 +162,15 @@ This component doesn't produce any UI and doesn't run on production mode, it act
 - Warning about legacy string ref API usage
 - Detecting unexpected side effects
 - Detecting legacy context API
+
 additional functionality will be added with future releases of React.
+
 To use it just wrap your components with ```<React.StrictMode>``` tag.
+
 ![StrictMode](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image11.png)
 
 In our example project we have a dependency on Formik that hasn't updated their classes so now we can see a Warning when running the app:
+
 ![ConsoleStrictMode](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image12.png)
 
 ## Other new features
