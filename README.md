@@ -1,6 +1,8 @@
-# React 16.3
+# React 16
 
-This project aims to ilustrate the differences between the old React way of doing things and the new React 16 version.
+This project aims to ilustrate the most important features in the new React 16 version.
+In the repo you will find two separate projects, Redux and ContextAPI one, each of them can be runned separately and produces a different bundle.
+The Redux one does not contain the example journeys used to explain error boundaries and portals, it's here just to show the differences between Redux and ContextAPI implementing a basic app global state.
 
 ## Render props
 
@@ -55,36 +57,101 @@ For more info, please check the following links:
 - [React docs](https://reactjs.org/docs/render-props.html)
 - [Why render props, motivation](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 
+
 ## Context API
 
-If you're using Redux only for avoiding passing props down the React tree then you should consider Context API instead ([probably you didn't need Redux in the first place](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)).
+From [React Docs](https://reactjs.org/docs/context.html):
+> Context provides a way to pass data through the component tree without having to pass props down manually at every level.
 
-On the other hand, if you use Redux with redux-sagas or redux-thunk to maintain a global state that get's updated with API requests you still need Redux.
+Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+During years, for avoiding the so called "prop-drilling" we've being using Flux libraries like Redux although it adds unnecessary complexity.
 
-This new Context API is intented exclusively to avoid passing props down the React tree, which is not the main aim of Redux although it was commonly used for this purpose.
+If you're using Redux only for avoiding passing props then you should consider Context API instead ([probably you didn't need Redux in the first place](https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367)).
+
+This new Context API is intented exclusively to avoid passing props down the React tree, which is not the main aim of Redux although it was commonly used for this purpose, so even if we compare them in this project keep in mind that we are comparing the most common missuse of Redux vs ContextAPI.
+
+## How to use it
+
+First, we need to declare a Context:
+
+``` javascript
+const ourContext = React.createContext('default conext');
+const { Provider, Consumer } = ourContext;
+```
+
+CreateContext method creates a { Provider, Consumer } pair. When React renders a context Consumer, it will read the current context value from the closest matching Provider above it in the tree and if there is none available it will grab the default one.
+
+Then, wrapping all the components that need access to the data in the 'store' we define a Provider:
+```javascript
+<Provider value={info: 'very useful information'}>
+  <ComponentA/>
+</Provider>
+```
+
+Now we are in position to use a Consumer to access the data in the global app store:
+```javascript
+class ComponentA extends Component {
+  // class methods, state, and whatever needed...
+  render(){
+    <Consumer>
+      {info =>
+        <p>{info}</p>
+      }
+    </Consumer>
+  }
+}
+```
+
+Now, everytime that a value in our store gets updated the components that use them will be re-rendered.
 
 ### Comparison
 The main differences are the following:
 
-#### Redux actions creators and reducers become react component state and methods
+#### React component state and methods instead of Redux actions creators and reducers
+
+Files involved:
+- [ContextAPI/src/App.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/ContextAPI/src/App.js)
+- [Redux/src/actions.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/Redux/src/actions.js)
+- [Redux/src/reducer.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/Redux/src/reducer.js)
+
 ![Class State and methods vs Redux actions and reducers](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image1.png)
-#### mapStatetoProps disappear, and we just render the consumer with a 'render-prop' component
+
+#### We just render the consumer with a 'render-prop' component so mapStatetoProps disappears
+
+Files involved:
+- [ContextAPI/src/Components/Content.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/ContextAPI/src/Components/Content.js)
+- [Redux/src/Components/Content.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/Redux/src/Components/Content.js)
+
 ![Content, access state](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image2.png)
+
 #### the same with mapDispatchToProps
+
+Files involved:
+- [ContextAPI/src/Components/Logout.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/ContextAPI/src/Components/Logout.js)
+- [Redux/src/Components/Logout.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/Redux/src/Components/Logout.js)
+
 ![Logout, access actions and state](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image3.png)
+
 #### We initializate the provider in the same way, just passing 'value' prop instead of 'store' and creating a context
+
+Files involved:
+- [ContextAPI/src/UserDataContext.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/ContextAPI/src/UserDataContext.js)
+- [ContextAPI/src/App.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/ContextAPI/src/App.js)
+- [Redux/src/App.js](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/Redux/src/App.js)
+
 ![Provider init](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image4.png)
 
 ### Pros and cons
 
 - Pros:
 1. More flexibility, we can have different nested Providers and Contexts
-2. Faster to develop
+2. Faster to develop given the reduced learning curve
 3. Less external dependencies
-4. Happens very often that we use Redux innecesarily, with this approach those situations are easier to spot, as we have much less code complexity.
+4. Happens very often that we use Redux innecesarily, with this approach those situations are easier to spot, as we have much less code complexity
 
 - Cons:
 1. It's a very new API, we may have not discovered all the constraints that this approach imply.
+2. Thanks to Redux immutability the developer experience is much more interesting than with Context, with Redux Dev Tools we can submit actions, get a history of changes over the global state etc.
 3. It only allows for a Consumer to read values from a single Provider type, one consumer to one provider.
 
 ## Error Boundaries

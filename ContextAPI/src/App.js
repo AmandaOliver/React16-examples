@@ -3,7 +3,7 @@ import Header from './Components/Header'
 import Content from './Components/Content'
 
 // we need to import our context definition, we could just initialize the context in this file,
-// but i don't want to :D
+// but i've decided to define it in a separate file to highlight the fact that we can use the same context in different react apps
 import UserDataContext from './UserDataContext'
 import './Styles/App.css'
 
