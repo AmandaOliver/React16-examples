@@ -266,3 +266,7 @@ In our example project we have a dependency on Formik, which hasn't had it's cla
 - [Support for custom DOM attributes](https://reactjs.org/blog/2017/09/08/dom-attributes-in-react-16.html)
 - [CreateRef API](https://reactjs.org/docs/refs-and-the-dom.html)
 - [Pointer Events](https://reactjs.org/blog/2018/05/23/react-v-16-4.html)
+
+## Thanks
+
+Thanks a lot to @MarkLyck, @Morthor and Ricardo Antunes for their contributions.
