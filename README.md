@@ -7,7 +7,7 @@ The Redux one does not contain the example journeys used to explain error bounda
 ## Render props
 
 A render prop is a function prop that a component uses to know what to render.
-This is a very useful technique for sharing code between components, not a new feature, which has become popular recently.
+This is a very useful technique for sharing code between components (not a new feature) which has become popular recently.
 
 Here's a generic overview:
 
