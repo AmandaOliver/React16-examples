@@ -76,7 +76,7 @@ This new Context API is intented exclusively to avoid passing props down the Rea
 First, we need to declare a Context:
 
 ``` javascript
-const ourContext = React.createContext('default conext');
+const ourContext = React.createContext('default context');
 const { Provider, Consumer } = ourContext;
 ```
 
@@ -121,7 +121,7 @@ Files involved:
 
 ![Class State and methods vs Redux actions and reducers](https://github.com/AmandaOliver/Redux-vs-contextAPI/blob/master/images/image1.png)
 
-#### We render the consumer with only a 'render-prop' component, so mapStatetoProps disappears
+#### We render the consumer with only a 'render-prop' component, so mapStateToProps disappears
 
 Files involved:
 
@@ -193,7 +193,7 @@ This new feature allow us to not break the whole component tree if there is a fa
 
 ## Portals
 
-React docs define it as:
+[React docs](https://reactjs.org/docs/portals.html) define it as:
 > Portals provide a first-class way to render children into a DOM node that exists outside
 > the DOM hierarchy of the parent component.
 
@@ -201,7 +201,7 @@ We can say in a very simplified way that portals allow us to render parts of the
 it can be even in a different window like in this [example](https://hackernoon.com/using-a-react-16-portal-to-do-something-cool-2a2d627b0202)
 
 If you have tried to create any UI bit that needed to break-out of it's container in React, like modals or tooltips, you probably already know how painful it can be. That's is why we have some libraries available in npm like [this one](https://github.com/reactjs/react-modal) for modals or [this one](https://www.npmjs.com/package/react-tooltip) for tooltips.
-Now we are able to do it easily by using [Portals](https://reactjs.org/docs/portals.html)!
+Now we are able to do it easily by using Portals!
 
 ### How it works
 
@@ -240,7 +240,7 @@ From React 17.0 these methods will be removed (only available with UNSAFE_ preff
 
 you can find more information about the new methods, as well as migration guidelines, in this [link](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html)
 
-## StricMode Component
+## StrictMode Component
 
 In order to make the migration task easier, and highlight potential problems, we now have a [StrictMode Component](https://reactjs.org/docs/strict-mode.html) available.
 This component doesn't produce any UI, and doesn't run on production mode, it just activates additional checks and warnings like:
